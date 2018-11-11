@@ -1,1 +1,0 @@
-from statsdsender import StatsdSender

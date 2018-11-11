@@ -1,9 +1,11 @@
 import time
-import sensors
-from statsdsender import StatsdSender
-from config import Config
+from app import sensors
+from app.statsdsender import StatsdSender
+from app.config import Config
+
 
 def main():
+
     config = Config()
     bh1750 = sensors.BH1750(bus=config.get_bus(), device=config.get_device(), mode=config.get_mode())
     dht11 = sensors.DHT_11(pin=config.get_pin())
