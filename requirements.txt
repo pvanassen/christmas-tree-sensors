@@ -1,0 +1,4 @@
+smbus-cffi
+Adafruit_DHT
+statsd
+six
