@@ -1,15 +1,15 @@
 import time
-from app import sensors
-from app.statsdsender import StatsdSender
-from app.config import Config
+import sensors
+import statsdsender
+import config
 
 
 def main():
 
-    config = Config()
+    config = config.Config()
     bh1750 = sensors.BH1750(bus=config.get_bus(), device=config.get_device(), mode=config.get_mode())
     dht11 = sensors.DHT_11(pin=config.get_pin())
-    statsdsender = StatsdSender(host=config.get_hostname(), port=config.get_port(), prefix=config.get_prefix())
+    statsdsender = statsdsender.StatsdSender(host=config.get_hostname(), port=config.get_port(), prefix=config.get_prefix())
 
     while True:
         luminosity = bh1750.get_luminosity()
