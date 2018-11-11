@@ -1,4 +1,4 @@
-smbus-cffi
+smbus2
 Adafruit_DHT
 statsd
 six
