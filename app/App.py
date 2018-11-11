@@ -6,17 +6,17 @@ import config
 
 def main():
 
-    config = config.Config()
-    bh1750 = sensors.BH1750(bus=config.get_bus(), device=config.get_device(), mode=config.get_mode())
-    dht11 = sensors.DHT_11(pin=config.get_pin())
-    statsdsender = statsdsender.StatsdSender(host=config.get_hostname(), port=config.get_port(), prefix=config.get_prefix())
+    _config = config.Config()
+    _bh1750 = sensors.BH1750(bus=_config.get_bus(), device=_config.get_device(), mode=_config.get_mode())
+    _dht11 = sensors.DHT_11(pin=_config.get_pin())
+    _statsdsender = statsdsender.StatsdSender(host=_config.get_hostname(), port=_config.get_port(), prefix=_config.get_prefix())
 
     while True:
-        luminosity = bh1750.get_luminosity()
-        (humidity, temperature) = dht11.read_humidity_temperature()
-        statsdsender.send_luminosity(luminosity)
-        statsdsender.send_humidity(humidity)
-        statsdsender.send_temperature(temperature)
+        luminosity = _bh1750.get_luminosity()
+        (humidity, temperature) = _dht11.read_humidity_temperature()
+        _statsdsender.send_luminosity(luminosity)
+        _statsdsender.send_humidity(humidity)
+        _statsdsender.send_temperature(temperature)
         time.sleep(15)
 
 
