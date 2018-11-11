@@ -9,4 +9,4 @@ class DHT_11:
         self._pin = pin
 
     def read_humidity_temperature(self):
-        Adafruit_DHT.read_retry(self._sensor, self._pin)
+        return Adafruit_DHT.read_retry(self._sensor, self._pin)
