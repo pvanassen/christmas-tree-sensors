@@ -10,28 +10,27 @@ else:
 class Config:
 
     def __init__(self):
-        _config = ConfigParser()
-        self._bh1750 = _config['BH1750']
-        self._dht11 = _config['dht11']
-        self._statsd = _config['statsd']
+        self._config = ConfigParser()
+        self._config.read('config/default.ini')
+        self._config.read('config/user.ini')
 
     def get_bus(self):
-        int(self._bh1750.get('bus', 1))
+        int(self._config.get('BH1750', 'bus'))
 
     def get_device(self):
-        int(self._bh1750.get('device', 0x23))
+        int(self._config.get('BH1750', 'device'))
 
     def get_mode(self):
-        int(self._bh1750.get('mode', 0x20))
+        int(self._config.get('BH1750', 'mode'))
 
     def get_pin(self):
-        int(self._dht11.get('pin', 4))
+        int(self._config.get('DHT11', 'pin'))
 
     def get_hostname(self):
-        self._statsd.get('hostname', 'localhost')
+        self._config.get('STATSD', 'hostname')
 
     def get_port(self):
-        int(self._statsd.get('port', 8125))
+        int(self._config.get('STATSD', 'port'))
 
     def get_prefix(self):
-        self._statsd.get('prefix', 'christmas_tree')
+        self._config.get('STATSD', 'prefix')
